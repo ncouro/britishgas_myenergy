@@ -128,7 +128,7 @@ def main():
     # Remove empty items
     valid_data = [_ for _ in all_fuels if not _['empty']]
     gas_history = [_ for _ in valid_data if _['fuel'] == 'gas']
-    elec_history = [_ for _ in valid_data if _['fuel'] == 'gas']
+    elec_history = [_ for _ in valid_data if _['fuel'] == 'electricity']
 
     # Save data
     save_as_csv(gas_history, GAS_FILENAME)
