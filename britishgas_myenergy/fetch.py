@@ -18,6 +18,12 @@ GAS_FILENAME = "myenergy_gas.csv"
 ELEC_FILENAME = "myenergy_electricity.csv"
 
 
+def csv_header_row():
+    """CSV header string"""
+    return ','.join(["Date", "Energy (kWh)", "Cost (GBP)",
+            "Is partial?", "Is energy estimated?",
+            "Is cost estimated?"])
+
 def make_csv_row(consumption_data):
     """Make a CSV row string from a consumption_data key"""
     return ', '.join((consumption_data['from'],
@@ -35,6 +41,7 @@ def save_as_csv(consumption_history, filename):
         filename (str): CSV file name
     """
     with open(filename, 'w') as f:
+        f.write(csv_header_row())
         for data in consumption_history:
             f.write(make_csv_row(data) + '\n')
 
